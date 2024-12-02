@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-APP = ['/windows.py']  # 你的主窗口 Python 文件
+APP = ['windows.py']  # 你的主窗口 Python 文件
 DATA_FILES = []  # 如果有额外的资源文件，可以将它们列在这里
 OPTIONS = {
     'argv_emulation': True,
