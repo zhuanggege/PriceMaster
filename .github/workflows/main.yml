@@ -21,13 +21,13 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install --upgrade py2app
+          pip install py2app  # 安装 py2app
 
       - name: Build macOS app
         run: python setup.py py2app  # 执行构建命令
 
       - name: Upload macOS app artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@latest  # 使用最新版本上传构建产物
         with:
-          name: windows  # 上传的文件名称
-          path: /*.app  # 确保上传正确的文件路径
+          name: MyMacApp  # 上传的文件名称
+          path: dist/*.app  # 确保上传正确的文件路径
