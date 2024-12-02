@@ -29,5 +29,5 @@ jobs:
       - name: Upload macOS app artifact
         uses: actions/upload-artifact@v2
         with:
-          name: MyMacApp  # 上传的文件名称
+          name: windows  # 上传的文件名称
           path: dist/*.app  # 确保上传正确的文件路径
