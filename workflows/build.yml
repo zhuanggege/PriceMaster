@@ -1,38 +1,33 @@
-name: Build macOS app
+name: Build macOS App
 
 on:
   push:
     branches:
-      - main  # 触发工作流的分支
+      - main  # 当推送到 main 分支时触发构建
 
 jobs:
   build:
     runs-on: macos-latest  # 在 macOS 环境中运行
 
     steps:
-      # 步骤 1: Checkout 代码
       - name: Checkout code
-        uses: actions/checkout@v2  # 检出当前代码
+        uses: actions/checkout@v2  # 检出代码
 
-      # 步骤 2: 设置 Python 环境
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.x'  # 设置 Python 版本（可以使用 3.x，3.7，3.8，等）
+          python-version: '3.x'  # 设置 Python 版本
 
-      # 步骤 3: 安装项目依赖
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install py2app  # 安装 py2app 或 cx_Freeze 等工具
+          pip install py2app  # 安装 py2app
 
-      # 步骤 4: 运行构建脚本
       - name: Build macOS app
-        run: python setup.py py2app  # 执行 py2app 构建（你可以根据需要使用其他工具，如 cx_Freeze）
+        run: python setup.py py2app  # 执行构建命令
 
-      # 步骤 5: 上传构建结果（.app 文件）
-      - name: Upload macOS app
+      - name: Upload macOS app artifact
         uses: actions/upload-artifact@v2
         with:
-          name: MyApp
-          path: dist/*.app  # 上传生成的 .app 文件
+          name: MyMacApp  # 上传的文件名称
+          path: dist/*.app  # 确保上传正确的文件路径
